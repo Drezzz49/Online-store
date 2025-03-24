@@ -127,7 +127,7 @@ namespace Online_store
             {
                 try
                 {
-                    string query = "SELECT * FROM Products";  // SQL-fråga
+                    string query = "SELECT * FROM Products WHERE is_deleted = FALSE;";  // SQL-fråga
                     using (var cmd = new NpgsqlCommand(query, _conn))
                     using (var reader = cmd.ExecuteReader())
                     {
@@ -659,12 +659,18 @@ namespace Online_store
                     //bryr sig inte om case sensetivity
                     // ILIKE - Case-insensitive search for text.
                     // TEXT ILIKE - Converts numbers to text so they can be searched like words.
-                    string query = @"SELECT product_id, name, base_price, quantity 
-                             FROM Products 
-                             WHERE code ILIKE @search 
-                                OR name ILIKE @search 
-                                OR supplier_id::TEXT ILIKE @search 
-                                OR base_price::TEXT ILIKE @search";
+                    string query = @"
+                SELECT p.product_id, p.name, p.base_price, p.quantity, 
+                       d.discount_code, d.percentage AS discount_percentage
+                FROM Products p
+                LEFT JOIN Product_Discounts pd ON p.product_id = pd.product_id
+                LEFT JOIN Discounts d ON pd.discount_id = d.discount_id 
+                    AND CURRENT_DATE BETWEEN pd.start_date AND pd.end_date
+                WHERE (p.code ILIKE @search 
+                   OR p.name ILIKE @search 
+                   OR p.supplier_id::TEXT ILIKE @search 
+                   OR p.base_price::TEXT ILIKE @search)
+                AND p.is_deleted = FALSE";
 
                     using (var cmd = new NpgsqlCommand(query, _conn))
                     {
@@ -679,7 +685,13 @@ namespace Online_store
                                 while (reader.Read())
                                 {
                                     string productInfo = $"ID: {reader["product_id"]}, Name: {reader["name"]}, " +
-                                                         $"Price: {reader["base_price"]}, Stock: {reader["quantity"]}";
+                                                 $"Price: {reader["base_price"]}, Stock: {reader["quantity"]}";
+
+                                    // Check if a discount is applied
+                                    if (reader["discount_code"] != DBNull.Value)
+                                    {
+                                        productInfo += $", Discount: {reader["discount_code"]} ({reader["discount_percentage"]}% off)";
+                                    }
 
                                     listBoxMain.Items.Add(productInfo);
                                 }
@@ -721,12 +733,18 @@ namespace Online_store
                     //bryr sig inte om case sensetivity
                     // ILIKE - Case-insensitive search for text.
                     // TEXT ILIKE - Converts numbers to text so they can be searched like words.
-                    string query = @"SELECT product_id, name, base_price, quantity 
-                             FROM Products 
-                             WHERE code ILIKE @search 
-                                OR name ILIKE @search 
-                                OR supplier_id::TEXT ILIKE @search 
-                                OR base_price::TEXT ILIKE @search";
+                    string query = @"
+                SELECT p.product_id, p.name, p.base_price, p.quantity, 
+                       d.discount_code, d.percentage AS discount_percentage
+                FROM Products p
+                LEFT JOIN Product_Discounts pd ON p.product_id = pd.product_id
+                LEFT JOIN Discounts d ON pd.discount_id = d.discount_id 
+                    AND CURRENT_DATE BETWEEN pd.start_date AND pd.end_date
+                WHERE (p.code ILIKE @search 
+                   OR p.name ILIKE @search 
+                   OR p.supplier_id::TEXT ILIKE @search 
+                   OR p.base_price::TEXT ILIKE @search)
+                AND p.is_deleted = FALSE;";
 
                     using (var cmd = new NpgsqlCommand(query, _conn))
                     {
@@ -741,7 +759,13 @@ namespace Online_store
                                 while (reader.Read())
                                 {
                                     string productInfo = $"ID: {reader["product_id"]}, Name: {reader["name"]}, " +
-                                                         $"Price: {reader["base_price"]}, Stock: {reader["quantity"]}";
+                                                 $"Price: {reader["base_price"]}, Stock: {reader["quantity"]}";
+
+                                    // Check if a discount is applied
+                                    if (reader["discount_code"] != DBNull.Value)
+                                    {
+                                        productInfo += $", Discount: {reader["discount_code"]} ({reader["discount_percentage"]}% off)";
+                                    }
 
                                     listBoxMain.Items.Add(productInfo);
                                 }
@@ -1000,6 +1024,130 @@ namespace Online_store
             }
         }
 
+        private void btnAllProducts_Click(object sender, EventArgs e)
+        {
+            if (_conn != null && _conn.State == System.Data.ConnectionState.Open)
+            {
+                try
+                {
+                    // två stycken left join och en group by för att inte få in vissa resultat dubbla gånger
+                    string query = @"
+                SELECT p.product_id, p.name, p.base_price, p.quantity, 
+                       d.discount_code, d.percentage AS discount_percentage
+                FROM Products p
+                LEFT JOIN Product_Discounts pd ON p.product_id = pd.product_id
+                LEFT JOIN Discounts d ON pd.discount_id = d.discount_id 
+                    AND CURRENT_DATE BETWEEN pd.start_date AND pd.end_date
+                WHERE p.is_deleted = FALSE
+                GROUP BY p.product_id, p.name, p.base_price, p.quantity, 
+                         d.discount_code, d.percentage";
 
+                    using (var cmd = new NpgsqlCommand(query, _conn))
+                    {
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            listBoxMain.Items.Clear(); // Clear previous results
+
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    string productInfo = $"ID: {reader["product_id"]}, Name: {reader["name"]}, " +
+                                                         $"Price: {reader["base_price"]}, Stock: {reader["quantity"]}";
+
+                                    // Check if a discount is applied
+                                    if (reader["discount_code"] != DBNull.Value)
+                                    {
+                                        productInfo += $", Discount: {reader["discount_code"]} ({reader["discount_percentage"]}% off)";
+                                    }
+                                    else
+                                    {
+                                        productInfo += ", No discount";
+                                    }
+
+                                    // Add the product info to the ListBox
+                                    listBoxMain.Items.Add(productInfo);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("No products found.", "No Products", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error retrieving products: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No open connection to the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnDelProduct_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(tbxDelProduct.Text))
+            {
+                MessageBox.Show("Please enter a valid product ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int productId;
+            if (!int.TryParse(tbxDelProduct.Text, out productId))
+            {
+                MessageBox.Show("Product ID must be a valid integer.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to mark this product as deleted?" +
+                " This action cannot be undone.", "Confirm Deletion",MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            
+            
+            if (dialogResult == DialogResult.Yes)
+            {
+                if (_conn != null && _conn.State == System.Data.ConnectionState.Open)
+                {
+                    try
+                    {
+                        //Update the product's is_deleted column to TRUE (soft delete)
+                        string updateQuery = "UPDATE Products SET is_deleted = TRUE WHERE product_id = @productId";
+
+                        using (var cmd = new NpgsqlCommand(updateQuery, _conn))
+                        {
+                            cmd.Parameters.AddWithValue("@productId", productId);
+                            int rowsAffected = cmd.ExecuteNonQuery();
+
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("Product successfully marked as deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Product not found or already deleted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error marking product as deleted: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No open connection to the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                // If the user clicks "No"
+                MessageBox.Show("Product deletion canceled.", "Cancellation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            tbxDelProduct.Clear();
+
+        }
     }
 }

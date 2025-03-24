@@ -36,6 +36,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label39 = new System.Windows.Forms.Label();
             this.btnSadmin = new System.Windows.Forms.Button();
             this.tbxSadmin = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -89,6 +90,7 @@
             this.tbxAddAmount = new System.Windows.Forms.TextBox();
             this.tbxAddprodId = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label38 = new System.Windows.Forms.Label();
             this.btnProductSearch = new System.Windows.Forms.Button();
             this.tbxSearchProduct = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -123,8 +125,11 @@
             this.tbxLastName = new System.Windows.Forms.TextBox();
             this.tbxFirstName = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
+            this.btnAllProducts = new System.Windows.Forms.Button();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.tbxDelProduct = new System.Windows.Forms.TextBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.btnDelProduct = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -138,6 +143,7 @@
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnOpen
@@ -175,7 +181,7 @@
             this.listBoxMain.FormattingEnabled = true;
             this.listBoxMain.Location = new System.Drawing.Point(466, 34);
             this.listBoxMain.Name = "listBoxMain";
-            this.listBoxMain.Size = new System.Drawing.Size(348, 420);
+            this.listBoxMain.Size = new System.Drawing.Size(471, 420);
             this.listBoxMain.TabIndex = 3;
             // 
             // tabControl1
@@ -213,6 +219,15 @@
             this.groupBox8.TabIndex = 10;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Search Products";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(7, 42);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(75, 52);
+            this.label39.TabIndex = 2;
+            this.label39.Text = "search by:\r\ncode(P002)\r\nname(Iphone)\r\nsupplider ID(2)\r\n";
             // 
             // btnSadmin
             // 
@@ -390,6 +405,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.groupBox9);
             this.tabPage4.Controls.Add(this.groupBox4);
             this.tabPage4.Controls.Add(this.groupBox2);
             this.tabPage4.Controls.Add(this.groupBox1);
@@ -722,6 +738,7 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.btnAllProducts);
             this.groupBox6.Controls.Add(this.label38);
             this.groupBox6.Controls.Add(this.btnProductSearch);
             this.groupBox6.Controls.Add(this.tbxSearchProduct);
@@ -731,6 +748,15 @@
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Search Products";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(9, 42);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(75, 52);
+            this.label38.TabIndex = 2;
+            this.label38.Text = "search by:\r\ncode(P002)\r\nname(Iphone)\r\nsupplider ID(2)";
             // 
             // btnProductSearch
             // 
@@ -1044,29 +1070,59 @@
             this.tbxFirstName.Size = new System.Drawing.Size(100, 20);
             this.tbxFirstName.TabIndex = 0;
             // 
-            // label38
+            // btnAllProducts
             // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(9, 42);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(75, 52);
-            this.label38.TabIndex = 2;
-            this.label38.Text = "search by:\r\ncode(P002)\r\nname(Iphone)\r\nsupplider ID(2)";
+            this.btnAllProducts.Location = new System.Drawing.Point(119, 71);
+            this.btnAllProducts.Name = "btnAllProducts";
+            this.btnAllProducts.Size = new System.Drawing.Size(75, 23);
+            this.btnAllProducts.TabIndex = 3;
+            this.btnAllProducts.Text = "all products";
+            this.btnAllProducts.UseVisualStyleBackColor = true;
+            this.btnAllProducts.Click += new System.EventHandler(this.btnAllProducts_Click);
             // 
-            // label39
+            // groupBox9
             // 
-            this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(7, 42);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(75, 52);
-            this.label39.TabIndex = 2;
-            this.label39.Text = "search by:\r\ncode(P002)\r\nname(Iphone)\r\nsupplider ID(2)\r\n";
+            this.groupBox9.Controls.Add(this.btnDelProduct);
+            this.groupBox9.Controls.Add(this.label40);
+            this.groupBox9.Controls.Add(this.tbxDelProduct);
+            this.groupBox9.Location = new System.Drawing.Point(190, 115);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(200, 84);
+            this.groupBox9.TabIndex = 3;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Delete Product";
+            // 
+            // tbxDelProduct
+            // 
+            this.tbxDelProduct.Location = new System.Drawing.Point(79, 22);
+            this.tbxDelProduct.Name = "tbxDelProduct";
+            this.tbxDelProduct.Size = new System.Drawing.Size(100, 20);
+            this.tbxDelProduct.TabIndex = 0;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(12, 25);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(61, 13);
+            this.label40.TabIndex = 1;
+            this.label40.Text = "Product ID:";
+            // 
+            // btnDelProduct
+            // 
+            this.btnDelProduct.Location = new System.Drawing.Point(12, 48);
+            this.btnDelProduct.Name = "btnDelProduct";
+            this.btnDelProduct.Size = new System.Drawing.Size(88, 23);
+            this.btnDelProduct.TabIndex = 2;
+            this.btnDelProduct.Text = "Delete Product";
+            this.btnDelProduct.UseVisualStyleBackColor = true;
+            this.btnDelProduct.Click += new System.EventHandler(this.btnDelProduct_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(826, 562);
+            this.ClientSize = new System.Drawing.Size(949, 562);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.listBoxMain);
             this.Controls.Add(this.btnClose);
@@ -1097,6 +1153,8 @@
             this.groupBox5.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1199,6 +1257,11 @@
         private System.Windows.Forms.TextBox tbxSadmin;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Button btnAllProducts;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.TextBox tbxDelProduct;
+        private System.Windows.Forms.Button btnDelProduct;
     }
 }
 
