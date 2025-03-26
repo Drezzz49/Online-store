@@ -571,7 +571,7 @@ namespace Online_store
                 return;
             }
 
-            // Check if new quantity is a valid number
+            // kollar så det är ett nummer
             int newQuantity;
             if (!int.TryParse(tbxEditNewQuantity.Text, out newQuantity) || newQuantity < 0)
             {
@@ -579,7 +579,7 @@ namespace Online_store
                 return;
             }
 
-            // Check if Product ID is a valid integer
+            // kollar så det är ett nummer
             int productId;
             if (!int.TryParse(tbxEditProductid.Text, out productId))
             {
@@ -598,42 +598,39 @@ namespace Online_store
             {
                 try
                 {
-                    // Start the transaction
+                    // Starta transaction
                     using (var transaction = _conn.BeginTransaction())
                     {
-                        // Create a command to update the quantity
+                        // updatera quantity
                         string updateQuery = "UPDATE Products SET quantity = @quantity WHERE product_id = @product_id";
 
                         using (var cmd = new NpgsqlCommand(updateQuery, _conn, transaction))
                         {
-                            // Add parameters to prevent SQL injection
+                            // lägger till parametrar för att förhindra SQL injection
                             cmd.Parameters.AddWithValue("@quantity", newQuantity);
                             cmd.Parameters.AddWithValue("@product_id", productId);
 
-                            // Execute the command
                             int rowsAffected = cmd.ExecuteNonQuery();
                             if (rowsAffected > 0)
                             {
-                                // Commit the transaction if successful
+                                // Commit om transactionen lyckades
                                 transaction.Commit();
                                 MessageBox.Show("Stock quantity updated successfully!");
                             }
                             else
                             {
-                                // Rollback the transaction if the update fails
+                                // Rollback om transactionen in lyckades
                                 transaction.Rollback();
                                 MessageBox.Show("Failed to update stock quantity. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
 
-                        // Clear the textboxes after successful update
                         tbxEditProductid.Clear();
                         tbxEditNewQuantity.Clear();
                     }
                 }
                 catch (Exception ex)
                 {
-                    // If an error occurs, roll back the transaction
                     MessageBox.Show($"Error updating stock: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -652,10 +649,13 @@ namespace Online_store
                 return;
             }
 
-            if (!IsValueUniqe("Customers", "email", loggedUser))
+           
+
+            if (!IsValueUniqe("Customers", "email", tbxLoginEmail.Text)) // If false, email exists
             {
-                
+                loggedUser = tbxLoginEmail.Text; // Move this before checking
                 lblUser.Text = loggedUser;
+
                 MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 tbxLoginEmail.Clear(); // Clear the email field after successful login
@@ -666,7 +666,6 @@ namespace Online_store
                 MessageBox.Show("Email not found. Please check your email or register.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
-            loggedUser = tbxLoginEmail.Text;
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
@@ -899,7 +898,7 @@ namespace Online_store
                     // om det inte finns en öppen order som gör vi en ny
                     if (orderId == -1)
                     {
-                        string createOrderQuery = "INSERT INTO Orders (customer_id, total_price, confirmed) VALUES (@customer_id, 0, FALSE) RETURNING order_id";
+                        string createOrderQuery = "INSERT INTO Orders (customer_id, total_price, confirmed, pending_confirmation, cancelled) VALUES (@customer_id, 0, FALSE, FALSE, FALSE) RETURNING order_id";
                         //gör en ny order för den inloggade användarens id
                         using (var cmd = new NpgsqlCommand(createOrderQuery, _conn))
                         {
@@ -957,6 +956,15 @@ namespace Online_store
                         cmd.ExecuteNonQuery();
                     }
 
+                    // uppdaterar stockefter det är tillagt i ordern
+                    string updateStockQuery = "UPDATE Products SET quantity = quantity - @amount WHERE product_id = @product_id";
+                    using (var cmd = new NpgsqlCommand(updateStockQuery, _conn))
+                    {
+                        cmd.Parameters.AddWithValue("@amount", amount);
+                        cmd.Parameters.AddWithValue("@product_id", productId);
+                        cmd.ExecuteNonQuery();
+                    }
+
                     MessageBox.Show("Item added to the order successfully!");
 
                     tbxAddprodId.Clear();
@@ -977,96 +985,77 @@ namespace Online_store
 
         private void btnshowCart_Click(object sender, EventArgs e)
         {
-            // Ensure the user is logged in
             if (string.IsNullOrWhiteSpace(loggedUser))
             {
                 MessageBox.Show("Please log in first.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            
-            int customerId = -1;
-            string getCustomerIdQuery = "SELECT customer_id FROM Customers WHERE email = @loggedUser";
-            //Ta customer id baserat på inloggade mail addressen
-
             try
             {
-                using (var cmd = new NpgsqlCommand(getCustomerIdQuery, _conn))
-                {
-                    cmd.Parameters.AddWithValue("@loggedUser", loggedUser);
-                    object result = cmd.ExecuteScalar();
-                    if (result == null)
-                    {
-                        MessageBox.Show("No customer found with this email.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                    customerId = Convert.ToInt32(result);
-                }
-
-                
-                string getOrderQuery = "SELECT order_id FROM Orders WHERE customer_id = @customer_id AND confirmed = FALSE AND pending_confirmation = FALSE";
-                //kollar om order_id som vi stoppat in har confirmed som flask och pending_confirmation som falsk
-                int orderId = -1;
-
-                using (var cmd = new NpgsqlCommand(getOrderQuery, _conn))
-                {
-                    cmd.Parameters.AddWithValue("@customer_id", customerId);
-                    object result = cmd.ExecuteScalar();
-                    if (result != null)
-                    {
-                        orderId = Convert.ToInt32(result);
-                    }
-                    else
-                    {
-                        MessageBox.Show("You do not have any unconfirmed orders.", "Cart is empty", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return;
-                    }
-                }
-
-
                 string getOrderItemsQuery = @"
-            SELECT oi.order_item_id, p.name, oi.quantity, oi.price
-            FROM Order_Items oi
-            JOIN Products p ON oi.product_id = p.product_id
-            WHERE oi.order_id = @order_id";
-                // Hämtar information om specifika orderrader baserat på order_id
-                // Använder JOIN för att koppla ihop Order_Items-tabellen med Products-tabellen
-                // filtrerar så att endast rader med order_id som vi skrev in returneras
+        SELECT oi.order_item_id, p.name, oi.quantity, oi.price, pd.discount_id, d.percentage, pd.start_date, pd.end_date
+        FROM Order_Items oi
+        JOIN Products p ON oi.product_id = p.product_id
+        JOIN Orders o ON oi.order_id = o.order_id
+        JOIN Customers c ON o.customer_id = c.customer_id
+        LEFT JOIN Product_Discounts pd ON p.product_id = pd.product_id AND pd.start_date <= CURRENT_DATE AND pd.end_date >= CURRENT_DATE
+        LEFT JOIN Discounts d ON pd.discount_id = d.discount_id
+        WHERE c.email = @loggedUser
+        AND o.confirmed = FALSE
+        AND o.pending_confirmation = FALSE";
+                // Hämtar relevant information information
+                // Hämtar eventuella rabatter som gäller för produkterna i ordern.  
+                // gör joins för att koppla ihopatabeller för att kunna nå alla värden
+                // Använder LEFT JOIN för att inkludera rabatter bara om det finns en aktiv rabatt för produkten.  
+                // kollar rabatten endast inkluderas om dagens datum ligger inom rabattens giltighetsperiod.  
+                // Filtrerar endast på obekräftade beställningar, som väntar på bekräftelse och är aktiva  
 
 
                 using (var cmd = new NpgsqlCommand(getOrderItemsQuery, _conn))
                 {
-                    cmd.Parameters.AddWithValue("@order_id", orderId);
+                    cmd.Parameters.AddWithValue("@loggedUser", loggedUser);
 
                     using (var reader = cmd.ExecuteReader())
                     {
-                        // Assuming you have a ListBox or DataGridView to show the order items
                         string displayText = "";
                         decimal totalPrice = 0;
+                        bool hasItems = false;
 
                         while (reader.Read())
                         {
+                            hasItems = true;
                             string productName = reader.GetString(1);
                             int quantity = reader.GetInt32(2);
                             decimal price = reader.GetDecimal(3);
-                            decimal itemTotal = quantity * price;
 
-                            // Add item details to displayText (you could also add this to a ListBox or DataGridView)
+                            // Check if a discount exists
+                            decimal discountPercentage = reader.IsDBNull(4) ? 0 : reader.GetDecimal(5);  // Get discount percentage (0 if no discount)
+                            decimal discountAmount = price * (discountPercentage / 100);  // Calculate discount
+
+                            // Apply discount to price
+                            decimal discountedPrice = price - discountAmount;
+
+                            decimal itemTotal = quantity * discountedPrice;
+
+                            // Display item details
                             displayText += $"Product: {productName}\n" +
                                            $"Quantity: {quantity}\n" +
                                            $"Price: {price:C}\n" +
+                                           (discountPercentage > 0 ? $"Discount: {discountPercentage}%\n" : "") +
+                                           $"Discounted Price: {discountedPrice:C}\n" +
                                            $"Total: {itemTotal:C}\n\n";
 
-                            totalPrice += itemTotal;  // Add item total to the overall total price
+                            totalPrice += itemTotal;
                         }
 
-                        if (string.IsNullOrEmpty(displayText))
+                        if (!hasItems)
                         {
                             MessageBox.Show("Your cart is empty.", "No items", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             return;
                         }
 
-                        // Display the order items and the total price
+                        // Display the total price
                         displayText += $"Total Price: {totalPrice:C}";
                         MessageBox.Show(displayText, "Your Cart", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -1076,6 +1065,7 @@ namespace Online_store
             {
                 MessageBox.Show($"Error fetching cart details: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void btnAllProducts_Click(object sender, EventArgs e)
@@ -1473,7 +1463,12 @@ namespace Online_store
                 SET pending_confirmation = TRUE
                 WHERE customer_id = (SELECT customer_id FROM Customers WHERE email = @loggedUser)
                 AND confirmed = FALSE
+                AND cancelled = FALSE
                 RETURNING order_id";
+                    // sätter fältet 'pending_confirmation' till TRUE, vilket innebär att beställningen väntar på bekräftelse.
+                    // säkerställer att endast beställningar som inte är bekräftade och avbrutna uppdateras.
+                    // skickar tillbaka order_id
+
 
                     using (var cmd = new NpgsqlCommand(query, _conn))
                     {

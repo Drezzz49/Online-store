@@ -35,6 +35,12 @@
             this.listBoxMain = new System.Windows.Forms.ListBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.btnshowAdmin = new System.Windows.Forms.Button();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.btnConfirmOrders = new System.Windows.Forms.Button();
+            this.label48 = new System.Windows.Forms.Label();
+            this.tbxConfirmOrders = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.label39 = new System.Windows.Forms.Label();
             this.btnSadmin = new System.Windows.Forms.Button();
@@ -55,6 +61,28 @@
             this.btnOrders = new System.Windows.Forms.Button();
             this.btnDiscounts = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.btnAddProductDiscount = new System.Windows.Forms.Button();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label46 = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.tbxAddProductEnd = new System.Windows.Forms.TextBox();
+            this.tbxAddProductDisDisId = new System.Windows.Forms.TextBox();
+            this.tbxAddProductStart = new System.Windows.Forms.TextBox();
+            this.tbxAddProductDisProdid = new System.Windows.Forms.TextBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.btnAddDiscount = new System.Windows.Forms.Button();
+            this.label43 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.tbxAddDiscountReason = new System.Windows.Forms.TextBox();
+            this.tbxAddDiscountPercentage = new System.Windows.Forms.TextBox();
+            this.tbxAddDiscountName = new System.Windows.Forms.TextBox();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.btnDelProduct = new System.Windows.Forms.Button();
+            this.label40 = new System.Windows.Forms.Label();
+            this.tbxDelProduct = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnEditStcok = new System.Windows.Forms.Button();
             this.label33 = new System.Windows.Forms.Label();
@@ -82,7 +110,13 @@
             this.tbxSphone = new System.Windows.Forms.TextBox();
             this.tbxSname = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.btnDelOrderCustomer = new System.Windows.Forms.Button();
+            this.label49 = new System.Windows.Forms.Label();
+            this.tbxDelOrderCustomer = new System.Windows.Forms.TextBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.btnFinalizeOrder = new System.Windows.Forms.Button();
+            this.btnYourOrders = new System.Windows.Forms.Button();
             this.btnshowCart = new System.Windows.Forms.Button();
             this.btnAddItem = new System.Windows.Forms.Button();
             this.label37 = new System.Windows.Forms.Label();
@@ -90,6 +124,7 @@
             this.tbxAddAmount = new System.Windows.Forms.TextBox();
             this.tbxAddprodId = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnAllProducts = new System.Windows.Forms.Button();
             this.label38 = new System.Windows.Forms.Label();
             this.btnProductSearch = new System.Windows.Forms.Button();
             this.tbxSearchProduct = new System.Windows.Forms.TextBox();
@@ -125,60 +160,26 @@
             this.tbxLastName = new System.Windows.Forms.TextBox();
             this.tbxFirstName = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.btnAllProducts = new System.Windows.Forms.Button();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.tbxDelProduct = new System.Windows.Forms.TextBox();
-            this.label40 = new System.Windows.Forms.Label();
-            this.btnDelProduct = new System.Windows.Forms.Button();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.tbxAddDiscountName = new System.Windows.Forms.TextBox();
-            this.tbxAddDiscountPercentage = new System.Windows.Forms.TextBox();
-            this.tbxAddDiscountReason = new System.Windows.Forms.TextBox();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
-            this.btnAddDiscount = new System.Windows.Forms.Button();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.tbxAddProductDisProdid = new System.Windows.Forms.TextBox();
-            this.tbxAddProductStart = new System.Windows.Forms.TextBox();
-            this.tbxAddProductDisDisId = new System.Windows.Forms.TextBox();
-            this.tbxAddProductEnd = new System.Windows.Forms.TextBox();
-            this.label44 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
-            this.label46 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.btnAddProductDiscount = new System.Windows.Forms.Button();
-            this.btnYourOrders = new System.Windows.Forms.Button();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.btnFinalizeOrder = new System.Windows.Forms.Button();
-            this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.tbxConfirmOrders = new System.Windows.Forms.TextBox();
-            this.label48 = new System.Windows.Forms.Label();
-            this.btnConfirmOrders = new System.Windows.Forms.Button();
-            this.tbxDelOrderCustomer = new System.Windows.Forms.TextBox();
-            this.label49 = new System.Windows.Forms.Label();
-            this.btnDelOrderCustomer = new System.Windows.Forms.Button();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.btnshowAdmin = new System.Windows.Forms.Button();
+            this.label50 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox14.SuspendLayout();
+            this.groupBox13.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.groupBox11.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox12.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.groupBox9.SuspendLayout();
-            this.groupBox10.SuspendLayout();
-            this.groupBox11.SuspendLayout();
-            this.groupBox12.SuspendLayout();
-            this.groupBox13.SuspendLayout();
-            this.groupBox14.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnOpen
@@ -244,6 +245,64 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "ADMIN";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.Controls.Add(this.btnshowAdmin);
+            this.groupBox14.Location = new System.Drawing.Point(7, 355);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(199, 60);
+            this.groupBox14.TabIndex = 12;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "Information";
+            // 
+            // btnshowAdmin
+            // 
+            this.btnshowAdmin.Location = new System.Drawing.Point(9, 20);
+            this.btnshowAdmin.Name = "btnshowAdmin";
+            this.btnshowAdmin.Size = new System.Drawing.Size(178, 34);
+            this.btnshowAdmin.TabIndex = 0;
+            this.btnshowAdmin.Text = "Show monthly sales of every item";
+            this.btnshowAdmin.UseVisualStyleBackColor = true;
+            this.btnshowAdmin.Click += new System.EventHandler(this.btnshowAdmin_Click);
+            // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.btnConfirmOrders);
+            this.groupBox13.Controls.Add(this.label48);
+            this.groupBox13.Controls.Add(this.tbxConfirmOrders);
+            this.groupBox13.Location = new System.Drawing.Point(213, 249);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(216, 100);
+            this.groupBox13.TabIndex = 11;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "Confirm orders";
+            // 
+            // btnConfirmOrders
+            // 
+            this.btnConfirmOrders.Location = new System.Drawing.Point(13, 45);
+            this.btnConfirmOrders.Name = "btnConfirmOrders";
+            this.btnConfirmOrders.Size = new System.Drawing.Size(92, 23);
+            this.btnConfirmOrders.TabIndex = 2;
+            this.btnConfirmOrders.Text = "Confirm Order";
+            this.btnConfirmOrders.UseVisualStyleBackColor = true;
+            this.btnConfirmOrders.Click += new System.EventHandler(this.btnConfirmOrders_Click);
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(7, 22);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(47, 13);
+            this.label48.TabIndex = 1;
+            this.label48.Text = "Order id:";
+            // 
+            // tbxConfirmOrders
+            // 
+            this.tbxConfirmOrders.Location = new System.Drawing.Point(60, 19);
+            this.tbxConfirmOrders.Name = "tbxConfirmOrders";
+            this.tbxConfirmOrders.Size = new System.Drawing.Size(100, 20);
+            this.tbxConfirmOrders.TabIndex = 0;
             // 
             // groupBox8
             // 
@@ -455,6 +514,211 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "ADMIN EDITOR";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.btnAddProductDiscount);
+            this.groupBox11.Controls.Add(this.label47);
+            this.groupBox11.Controls.Add(this.label46);
+            this.groupBox11.Controls.Add(this.label45);
+            this.groupBox11.Controls.Add(this.label44);
+            this.groupBox11.Controls.Add(this.tbxAddProductEnd);
+            this.groupBox11.Controls.Add(this.tbxAddProductDisDisId);
+            this.groupBox11.Controls.Add(this.tbxAddProductStart);
+            this.groupBox11.Controls.Add(this.tbxAddProductDisProdid);
+            this.groupBox11.Location = new System.Drawing.Point(4, 340);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(433, 78);
+            this.groupBox11.TabIndex = 5;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Add Product discount";
+            // 
+            // btnAddProductDiscount
+            // 
+            this.btnAddProductDiscount.Location = new System.Drawing.Point(353, 19);
+            this.btnAddProductDiscount.Name = "btnAddProductDiscount";
+            this.btnAddProductDiscount.Size = new System.Drawing.Size(75, 48);
+            this.btnAddProductDiscount.TabIndex = 8;
+            this.btnAddProductDiscount.Text = "Add Product Discount";
+            this.btnAddProductDiscount.UseVisualStyleBackColor = true;
+            this.btnAddProductDiscount.Click += new System.EventHandler(this.btnAddProductDiscount_Click);
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(186, 53);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(55, 13);
+            this.label47.TabIndex = 7;
+            this.label47.Text = "End Date:";
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(182, 26);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(56, 13);
+            this.label46.TabIndex = 6;
+            this.label46.Text = "Start date:";
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(3, 50);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(63, 13);
+            this.label45.TabIndex = 5;
+            this.label45.Text = "Discount id:";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(3, 26);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(58, 13);
+            this.label44.TabIndex = 4;
+            this.label44.Text = "Product id:";
+            // 
+            // tbxAddProductEnd
+            // 
+            this.tbxAddProductEnd.Location = new System.Drawing.Point(247, 47);
+            this.tbxAddProductEnd.Name = "tbxAddProductEnd";
+            this.tbxAddProductEnd.Size = new System.Drawing.Size(100, 20);
+            this.tbxAddProductEnd.TabIndex = 3;
+            // 
+            // tbxAddProductDisDisId
+            // 
+            this.tbxAddProductDisDisId.Location = new System.Drawing.Point(65, 47);
+            this.tbxAddProductDisDisId.Name = "tbxAddProductDisDisId";
+            this.tbxAddProductDisDisId.Size = new System.Drawing.Size(100, 20);
+            this.tbxAddProductDisDisId.TabIndex = 2;
+            // 
+            // tbxAddProductStart
+            // 
+            this.tbxAddProductStart.Location = new System.Drawing.Point(247, 19);
+            this.tbxAddProductStart.Name = "tbxAddProductStart";
+            this.tbxAddProductStart.Size = new System.Drawing.Size(100, 20);
+            this.tbxAddProductStart.TabIndex = 1;
+            // 
+            // tbxAddProductDisProdid
+            // 
+            this.tbxAddProductDisProdid.Location = new System.Drawing.Point(65, 20);
+            this.tbxAddProductDisProdid.Name = "tbxAddProductDisProdid";
+            this.tbxAddProductDisProdid.Size = new System.Drawing.Size(100, 20);
+            this.tbxAddProductDisProdid.TabIndex = 0;
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.btnAddDiscount);
+            this.groupBox10.Controls.Add(this.label43);
+            this.groupBox10.Controls.Add(this.label42);
+            this.groupBox10.Controls.Add(this.label41);
+            this.groupBox10.Controls.Add(this.tbxAddDiscountReason);
+            this.groupBox10.Controls.Add(this.tbxAddDiscountPercentage);
+            this.groupBox10.Controls.Add(this.tbxAddDiscountName);
+            this.groupBox10.Location = new System.Drawing.Point(190, 206);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(211, 127);
+            this.groupBox10.TabIndex = 4;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Add Discount code";
+            // 
+            // btnAddDiscount
+            // 
+            this.btnAddDiscount.Location = new System.Drawing.Point(6, 97);
+            this.btnAddDiscount.Name = "btnAddDiscount";
+            this.btnAddDiscount.Size = new System.Drawing.Size(106, 23);
+            this.btnAddDiscount.TabIndex = 6;
+            this.btnAddDiscount.Text = "Add discount code";
+            this.btnAddDiscount.UseVisualStyleBackColor = true;
+            this.btnAddDiscount.Click += new System.EventHandler(this.btnAddDiscount_Click);
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(9, 74);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(47, 13);
+            this.label43.TabIndex = 5;
+            this.label43.Text = "Reason:";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(9, 52);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(65, 13);
+            this.label42.TabIndex = 4;
+            this.label42.Text = "Percentage:";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(9, 26);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(66, 13);
+            this.label41.TabIndex = 3;
+            this.label41.Text = "Code Name:";
+            this.label41.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // tbxAddDiscountReason
+            // 
+            this.tbxAddDiscountReason.Location = new System.Drawing.Point(79, 71);
+            this.tbxAddDiscountReason.Name = "tbxAddDiscountReason";
+            this.tbxAddDiscountReason.Size = new System.Drawing.Size(100, 20);
+            this.tbxAddDiscountReason.TabIndex = 2;
+            // 
+            // tbxAddDiscountPercentage
+            // 
+            this.tbxAddDiscountPercentage.Location = new System.Drawing.Point(79, 45);
+            this.tbxAddDiscountPercentage.Name = "tbxAddDiscountPercentage";
+            this.tbxAddDiscountPercentage.Size = new System.Drawing.Size(100, 20);
+            this.tbxAddDiscountPercentage.TabIndex = 1;
+            // 
+            // tbxAddDiscountName
+            // 
+            this.tbxAddDiscountName.Location = new System.Drawing.Point(79, 19);
+            this.tbxAddDiscountName.Name = "tbxAddDiscountName";
+            this.tbxAddDiscountName.Size = new System.Drawing.Size(100, 20);
+            this.tbxAddDiscountName.TabIndex = 0;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.btnDelProduct);
+            this.groupBox9.Controls.Add(this.label40);
+            this.groupBox9.Controls.Add(this.tbxDelProduct);
+            this.groupBox9.Location = new System.Drawing.Point(190, 115);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(211, 84);
+            this.groupBox9.TabIndex = 3;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Delete Product";
+            // 
+            // btnDelProduct
+            // 
+            this.btnDelProduct.Location = new System.Drawing.Point(12, 48);
+            this.btnDelProduct.Name = "btnDelProduct";
+            this.btnDelProduct.Size = new System.Drawing.Size(88, 23);
+            this.btnDelProduct.TabIndex = 2;
+            this.btnDelProduct.Text = "Delete Product";
+            this.btnDelProduct.UseVisualStyleBackColor = true;
+            this.btnDelProduct.Click += new System.EventHandler(this.btnDelProduct_Click);
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(12, 25);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(61, 13);
+            this.label40.TabIndex = 1;
+            this.label40.Text = "Product ID:";
+            // 
+            // tbxDelProduct
+            // 
+            this.tbxDelProduct.Location = new System.Drawing.Point(79, 22);
+            this.tbxDelProduct.Name = "tbxDelProduct";
+            this.tbxDelProduct.Size = new System.Drawing.Size(100, 20);
+            this.tbxDelProduct.TabIndex = 0;
             // 
             // groupBox4
             // 
@@ -710,8 +974,47 @@
             this.tabPage2.Text = "USER";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.btnDelOrderCustomer);
+            this.groupBox12.Controls.Add(this.label49);
+            this.groupBox12.Controls.Add(this.tbxDelOrderCustomer);
+            this.groupBox12.Location = new System.Drawing.Point(214, 108);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(200, 100);
+            this.groupBox12.TabIndex = 3;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Delete order";
+            // 
+            // btnDelOrderCustomer
+            // 
+            this.btnDelOrderCustomer.Location = new System.Drawing.Point(9, 48);
+            this.btnDelOrderCustomer.Name = "btnDelOrderCustomer";
+            this.btnDelOrderCustomer.Size = new System.Drawing.Size(75, 23);
+            this.btnDelOrderCustomer.TabIndex = 2;
+            this.btnDelOrderCustomer.Text = "Delete Order";
+            this.btnDelOrderCustomer.UseVisualStyleBackColor = true;
+            this.btnDelOrderCustomer.Click += new System.EventHandler(this.btnDelOrderCustomer_Click);
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(6, 25);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(50, 13);
+            this.label49.TabIndex = 1;
+            this.label49.Text = "Order ID:";
+            // 
+            // tbxDelOrderCustomer
+            // 
+            this.tbxDelOrderCustomer.Location = new System.Drawing.Point(62, 22);
+            this.tbxDelOrderCustomer.Name = "tbxDelOrderCustomer";
+            this.tbxDelOrderCustomer.Size = new System.Drawing.Size(100, 20);
+            this.tbxDelOrderCustomer.TabIndex = 0;
+            // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.label50);
             this.groupBox7.Controls.Add(this.btnFinalizeOrder);
             this.groupBox7.Controls.Add(this.btnYourOrders);
             this.groupBox7.Controls.Add(this.btnshowCart);
@@ -722,10 +1025,30 @@
             this.groupBox7.Controls.Add(this.tbxAddprodId);
             this.groupBox7.Location = new System.Drawing.Point(7, 215);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(200, 134);
+            this.groupBox7.Size = new System.Drawing.Size(211, 200);
             this.groupBox7.TabIndex = 2;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Add to cart";
+            // 
+            // btnFinalizeOrder
+            // 
+            this.btnFinalizeOrder.Location = new System.Drawing.Point(88, 102);
+            this.btnFinalizeOrder.Name = "btnFinalizeOrder";
+            this.btnFinalizeOrder.Size = new System.Drawing.Size(90, 23);
+            this.btnFinalizeOrder.TabIndex = 7;
+            this.btnFinalizeOrder.Text = "Finalize Order";
+            this.btnFinalizeOrder.UseVisualStyleBackColor = true;
+            this.btnFinalizeOrder.Click += new System.EventHandler(this.btnFinalizeOrder_Click);
+            // 
+            // btnYourOrders
+            // 
+            this.btnYourOrders.Location = new System.Drawing.Point(7, 103);
+            this.btnYourOrders.Name = "btnYourOrders";
+            this.btnYourOrders.Size = new System.Drawing.Size(75, 23);
+            this.btnYourOrders.TabIndex = 6;
+            this.btnYourOrders.Text = "Your orders";
+            this.btnYourOrders.UseVisualStyleBackColor = true;
+            this.btnYourOrders.Click += new System.EventHandler(this.btnYourOrders_Click);
             // 
             // btnshowCart
             // 
@@ -791,6 +1114,16 @@
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Search Products";
+            // 
+            // btnAllProducts
+            // 
+            this.btnAllProducts.Location = new System.Drawing.Point(119, 71);
+            this.btnAllProducts.Name = "btnAllProducts";
+            this.btnAllProducts.Size = new System.Drawing.Size(75, 23);
+            this.btnAllProducts.TabIndex = 3;
+            this.btnAllProducts.Text = "all products";
+            this.btnAllProducts.UseVisualStyleBackColor = true;
+            this.btnAllProducts.Click += new System.EventHandler(this.btnAllProducts_Click);
             // 
             // label38
             // 
@@ -1113,336 +1446,15 @@
             this.tbxFirstName.Size = new System.Drawing.Size(100, 20);
             this.tbxFirstName.TabIndex = 0;
             // 
-            // btnAllProducts
-            // 
-            this.btnAllProducts.Location = new System.Drawing.Point(119, 71);
-            this.btnAllProducts.Name = "btnAllProducts";
-            this.btnAllProducts.Size = new System.Drawing.Size(75, 23);
-            this.btnAllProducts.TabIndex = 3;
-            this.btnAllProducts.Text = "all products";
-            this.btnAllProducts.UseVisualStyleBackColor = true;
-            this.btnAllProducts.Click += new System.EventHandler(this.btnAllProducts_Click);
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.btnDelProduct);
-            this.groupBox9.Controls.Add(this.label40);
-            this.groupBox9.Controls.Add(this.tbxDelProduct);
-            this.groupBox9.Location = new System.Drawing.Point(190, 115);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(211, 84);
-            this.groupBox9.TabIndex = 3;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Delete Product";
-            // 
-            // tbxDelProduct
-            // 
-            this.tbxDelProduct.Location = new System.Drawing.Point(79, 22);
-            this.tbxDelProduct.Name = "tbxDelProduct";
-            this.tbxDelProduct.Size = new System.Drawing.Size(100, 20);
-            this.tbxDelProduct.TabIndex = 0;
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(12, 25);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(61, 13);
-            this.label40.TabIndex = 1;
-            this.label40.Text = "Product ID:";
-            // 
-            // btnDelProduct
-            // 
-            this.btnDelProduct.Location = new System.Drawing.Point(12, 48);
-            this.btnDelProduct.Name = "btnDelProduct";
-            this.btnDelProduct.Size = new System.Drawing.Size(88, 23);
-            this.btnDelProduct.TabIndex = 2;
-            this.btnDelProduct.Text = "Delete Product";
-            this.btnDelProduct.UseVisualStyleBackColor = true;
-            this.btnDelProduct.Click += new System.EventHandler(this.btnDelProduct_Click);
-            // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.btnAddDiscount);
-            this.groupBox10.Controls.Add(this.label43);
-            this.groupBox10.Controls.Add(this.label42);
-            this.groupBox10.Controls.Add(this.label41);
-            this.groupBox10.Controls.Add(this.tbxAddDiscountReason);
-            this.groupBox10.Controls.Add(this.tbxAddDiscountPercentage);
-            this.groupBox10.Controls.Add(this.tbxAddDiscountName);
-            this.groupBox10.Location = new System.Drawing.Point(190, 206);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(211, 127);
-            this.groupBox10.TabIndex = 4;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Add Discount code";
-            // 
-            // tbxAddDiscountName
-            // 
-            this.tbxAddDiscountName.Location = new System.Drawing.Point(79, 19);
-            this.tbxAddDiscountName.Name = "tbxAddDiscountName";
-            this.tbxAddDiscountName.Size = new System.Drawing.Size(100, 20);
-            this.tbxAddDiscountName.TabIndex = 0;
-            // 
-            // tbxAddDiscountPercentage
-            // 
-            this.tbxAddDiscountPercentage.Location = new System.Drawing.Point(79, 45);
-            this.tbxAddDiscountPercentage.Name = "tbxAddDiscountPercentage";
-            this.tbxAddDiscountPercentage.Size = new System.Drawing.Size(100, 20);
-            this.tbxAddDiscountPercentage.TabIndex = 1;
-            // 
-            // tbxAddDiscountReason
-            // 
-            this.tbxAddDiscountReason.Location = new System.Drawing.Point(79, 71);
-            this.tbxAddDiscountReason.Name = "tbxAddDiscountReason";
-            this.tbxAddDiscountReason.Size = new System.Drawing.Size(100, 20);
-            this.tbxAddDiscountReason.TabIndex = 2;
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(9, 26);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(66, 13);
-            this.label41.TabIndex = 3;
-            this.label41.Text = "Code Name:";
-            this.label41.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(9, 52);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(65, 13);
-            this.label42.TabIndex = 4;
-            this.label42.Text = "Percentage:";
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(9, 74);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(47, 13);
-            this.label43.TabIndex = 5;
-            this.label43.Text = "Reason:";
-            // 
-            // btnAddDiscount
-            // 
-            this.btnAddDiscount.Location = new System.Drawing.Point(6, 97);
-            this.btnAddDiscount.Name = "btnAddDiscount";
-            this.btnAddDiscount.Size = new System.Drawing.Size(106, 23);
-            this.btnAddDiscount.TabIndex = 6;
-            this.btnAddDiscount.Text = "Add discount code";
-            this.btnAddDiscount.UseVisualStyleBackColor = true;
-            this.btnAddDiscount.Click += new System.EventHandler(this.btnAddDiscount_Click);
-            // 
-            // groupBox11
-            // 
-            this.groupBox11.Controls.Add(this.btnAddProductDiscount);
-            this.groupBox11.Controls.Add(this.label47);
-            this.groupBox11.Controls.Add(this.label46);
-            this.groupBox11.Controls.Add(this.label45);
-            this.groupBox11.Controls.Add(this.label44);
-            this.groupBox11.Controls.Add(this.tbxAddProductEnd);
-            this.groupBox11.Controls.Add(this.tbxAddProductDisDisId);
-            this.groupBox11.Controls.Add(this.tbxAddProductStart);
-            this.groupBox11.Controls.Add(this.tbxAddProductDisProdid);
-            this.groupBox11.Location = new System.Drawing.Point(4, 340);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(433, 78);
-            this.groupBox11.TabIndex = 5;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Add Product discount";
-            // 
-            // tbxAddProductDisProdid
-            // 
-            this.tbxAddProductDisProdid.Location = new System.Drawing.Point(65, 20);
-            this.tbxAddProductDisProdid.Name = "tbxAddProductDisProdid";
-            this.tbxAddProductDisProdid.Size = new System.Drawing.Size(100, 20);
-            this.tbxAddProductDisProdid.TabIndex = 0;
-            // 
-            // tbxAddProductStart
-            // 
-            this.tbxAddProductStart.Location = new System.Drawing.Point(247, 19);
-            this.tbxAddProductStart.Name = "tbxAddProductStart";
-            this.tbxAddProductStart.Size = new System.Drawing.Size(100, 20);
-            this.tbxAddProductStart.TabIndex = 1;
-            // 
-            // tbxAddProductDisDisId
-            // 
-            this.tbxAddProductDisDisId.Location = new System.Drawing.Point(65, 47);
-            this.tbxAddProductDisDisId.Name = "tbxAddProductDisDisId";
-            this.tbxAddProductDisDisId.Size = new System.Drawing.Size(100, 20);
-            this.tbxAddProductDisDisId.TabIndex = 2;
-            // 
-            // tbxAddProductEnd
-            // 
-            this.tbxAddProductEnd.Location = new System.Drawing.Point(247, 47);
-            this.tbxAddProductEnd.Name = "tbxAddProductEnd";
-            this.tbxAddProductEnd.Size = new System.Drawing.Size(100, 20);
-            this.tbxAddProductEnd.TabIndex = 3;
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(3, 26);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(58, 13);
-            this.label44.TabIndex = 4;
-            this.label44.Text = "Product id:";
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(3, 50);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(63, 13);
-            this.label45.TabIndex = 5;
-            this.label45.Text = "Discount id:";
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(182, 26);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(56, 13);
-            this.label46.TabIndex = 6;
-            this.label46.Text = "Start date:";
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(186, 53);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(55, 13);
-            this.label47.TabIndex = 7;
-            this.label47.Text = "End Date:";
-            // 
-            // btnAddProductDiscount
-            // 
-            this.btnAddProductDiscount.Location = new System.Drawing.Point(353, 19);
-            this.btnAddProductDiscount.Name = "btnAddProductDiscount";
-            this.btnAddProductDiscount.Size = new System.Drawing.Size(75, 48);
-            this.btnAddProductDiscount.TabIndex = 8;
-            this.btnAddProductDiscount.Text = "Add Product Discount";
-            this.btnAddProductDiscount.UseVisualStyleBackColor = true;
-            this.btnAddProductDiscount.Click += new System.EventHandler(this.btnAddProductDiscount_Click);
-            // 
-            // btnYourOrders
-            // 
-            this.btnYourOrders.Location = new System.Drawing.Point(7, 103);
-            this.btnYourOrders.Name = "btnYourOrders";
-            this.btnYourOrders.Size = new System.Drawing.Size(75, 23);
-            this.btnYourOrders.TabIndex = 6;
-            this.btnYourOrders.Text = "Your orders";
-            this.btnYourOrders.UseVisualStyleBackColor = true;
-            this.btnYourOrders.Click += new System.EventHandler(this.btnYourOrders_Click);
-            // 
-            // groupBox12
-            // 
-            this.groupBox12.Controls.Add(this.btnDelOrderCustomer);
-            this.groupBox12.Controls.Add(this.label49);
-            this.groupBox12.Controls.Add(this.tbxDelOrderCustomer);
-            this.groupBox12.Location = new System.Drawing.Point(214, 108);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(200, 100);
-            this.groupBox12.TabIndex = 3;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Delete order";
-            // 
-            // btnFinalizeOrder
-            // 
-            this.btnFinalizeOrder.Location = new System.Drawing.Point(88, 102);
-            this.btnFinalizeOrder.Name = "btnFinalizeOrder";
-            this.btnFinalizeOrder.Size = new System.Drawing.Size(90, 23);
-            this.btnFinalizeOrder.TabIndex = 7;
-            this.btnFinalizeOrder.Text = "Finalize Order";
-            this.btnFinalizeOrder.UseVisualStyleBackColor = true;
-            this.btnFinalizeOrder.Click += new System.EventHandler(this.btnFinalizeOrder_Click);
-            // 
-            // groupBox13
-            // 
-            this.groupBox13.Controls.Add(this.btnConfirmOrders);
-            this.groupBox13.Controls.Add(this.label48);
-            this.groupBox13.Controls.Add(this.tbxConfirmOrders);
-            this.groupBox13.Location = new System.Drawing.Point(213, 249);
-            this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(216, 100);
-            this.groupBox13.TabIndex = 11;
-            this.groupBox13.TabStop = false;
-            this.groupBox13.Text = "Confirm orders";
-            // 
-            // tbxConfirmOrders
-            // 
-            this.tbxConfirmOrders.Location = new System.Drawing.Point(60, 19);
-            this.tbxConfirmOrders.Name = "tbxConfirmOrders";
-            this.tbxConfirmOrders.Size = new System.Drawing.Size(100, 20);
-            this.tbxConfirmOrders.TabIndex = 0;
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(7, 22);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(47, 13);
-            this.label48.TabIndex = 1;
-            this.label48.Text = "Order id:";
-            // 
-            // btnConfirmOrders
-            // 
-            this.btnConfirmOrders.Location = new System.Drawing.Point(13, 45);
-            this.btnConfirmOrders.Name = "btnConfirmOrders";
-            this.btnConfirmOrders.Size = new System.Drawing.Size(92, 23);
-            this.btnConfirmOrders.TabIndex = 2;
-            this.btnConfirmOrders.Text = "Confirm Order";
-            this.btnConfirmOrders.UseVisualStyleBackColor = true;
-            this.btnConfirmOrders.Click += new System.EventHandler(this.btnConfirmOrders_Click);
-            // 
-            // tbxDelOrderCustomer
-            // 
-            this.tbxDelOrderCustomer.Location = new System.Drawing.Point(62, 22);
-            this.tbxDelOrderCustomer.Name = "tbxDelOrderCustomer";
-            this.tbxDelOrderCustomer.Size = new System.Drawing.Size(100, 20);
-            this.tbxDelOrderCustomer.TabIndex = 0;
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(6, 25);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(50, 13);
-            this.label49.TabIndex = 1;
-            this.label49.Text = "Order ID:";
-            // 
-            // btnDelOrderCustomer
-            // 
-            this.btnDelOrderCustomer.Location = new System.Drawing.Point(9, 48);
-            this.btnDelOrderCustomer.Name = "btnDelOrderCustomer";
-            this.btnDelOrderCustomer.Size = new System.Drawing.Size(75, 23);
-            this.btnDelOrderCustomer.TabIndex = 2;
-            this.btnDelOrderCustomer.Text = "Delete Order";
-            this.btnDelOrderCustomer.UseVisualStyleBackColor = true;
-            this.btnDelOrderCustomer.Click += new System.EventHandler(this.btnDelOrderCustomer_Click);
-            // 
-            // groupBox14
-            // 
-            this.groupBox14.Controls.Add(this.btnshowAdmin);
-            this.groupBox14.Location = new System.Drawing.Point(7, 355);
-            this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(199, 60);
-            this.groupBox14.TabIndex = 12;
-            this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "Information";
-            // 
-            // btnshowAdmin
-            // 
-            this.btnshowAdmin.Location = new System.Drawing.Point(9, 20);
-            this.btnshowAdmin.Name = "btnshowAdmin";
-            this.btnshowAdmin.Size = new System.Drawing.Size(178, 34);
-            this.btnshowAdmin.TabIndex = 0;
-            this.btnshowAdmin.Text = "Show monthly sales of every item";
-            this.btnshowAdmin.UseVisualStyleBackColor = true;
-            this.btnshowAdmin.Click += new System.EventHandler(this.btnshowAdmin_Click);
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(9, 133);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(200, 52);
+            this.label50.TabIndex = 8;
+            this.label50.Text = "* if you\'ve finalized your order you cannot\r\n show your cart, and have to wait fo" +
+    "r\r\n admin to confirm it before you can\r\n make another";
             // 
             // Form1
             // 
@@ -1459,11 +1471,20 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -1471,6 +1492,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.groupBox6.ResumeLayout(false);
@@ -1479,17 +1502,6 @@
             this.groupBox5.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
-            this.groupBox12.ResumeLayout(false);
-            this.groupBox12.PerformLayout();
-            this.groupBox13.ResumeLayout(false);
-            this.groupBox13.PerformLayout();
-            this.groupBox14.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1627,6 +1639,7 @@
         private System.Windows.Forms.TextBox tbxDelOrderCustomer;
         private System.Windows.Forms.GroupBox groupBox14;
         private System.Windows.Forms.Button btnshowAdmin;
+        private System.Windows.Forms.Label label50;
     }
 }
 
